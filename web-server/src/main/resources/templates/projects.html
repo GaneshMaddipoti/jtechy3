@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head><title>projects list</title></head>
+<body>
+<div class="container">
+    <br/>
+
+    <div th:if="${not #lists.isEmpty(projects)}">
+        <ul class="collection with-header" th:each="entry : ${projects}">
+            <li class="collection-header"><b><span th:text="${entry.key}"/></b></li>
+            <li class="collection-item">
+                <div class="row">
+                    <div class="col s12 m6 l4" th:each="project : ${entry.value}">
+                        <a href="#" onclick="load('project/projectdetails/${project.id}')">
+                            <div class="valign-wrapper">
+                                <i class="material-icons">chevron_right</i><span th:text="${project.name}"/>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="card-panel" th:if="${#lists.isEmpty(projects)}">No Projects Found.</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#modal1').modal('close');
+    });
+
+    function load(arg) {
+        $('#modal1').modal('open');
+        $("main").load(arg);
+    }
+</script>
+</body>
+</html>
+

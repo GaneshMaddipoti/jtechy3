@@ -1,0 +1,69 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head><title>courses list</title>
+    <style>
+        .show-more-height {
+            height: 200px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="softdev">
+
+    <div class="row">
+        <br/> <a href="#!" id="coursesLink">Tutorials</a> -
+        <span th:text="${course.category}"/> - <span th:text="${course.name}"/>
+    </div>
+
+    <div class="row" th:each="field,loop : ${course.fields}">
+        <div class="col s12">
+            <div class="card-panel">
+                <h5 th:text="${field.fieldName}"/>
+                <div th:id="|field${loop.count}|" class="show-more-height">
+                    <span style="white-space: pre-wrap;" th:utext="${field.fieldValue}"/>
+                </div>
+                <div th:onclick="|showmoreless(${loop.count})|" class="blue-text" style="cursor: pointer">Show More/Less</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="row">
+            <div class="col s12">
+                <button type="button" class="btn" id="editBtn" th:onclick="|gotoDetail('${course.id}')|"><i
+                        class="material-icons">edit</i></button>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#coursesLink").click(function () {
+            $("#main-content").load("courses");
+        });
+    });
+    $(function () {
+        $('textarea').each(function () {
+            $(this).height($(this).prop('scrollHeight'));
+        });
+    });
+
+    function gotoDetail(arg) {
+        $("#main-content").load("coursemodify/" + arg);
+    }
+
+    function addCourseField(arg) {
+        $("#main-content").load("course/addcoursefield?id=" + arg);
+    }
+
+    function showmoreless(arg) {
+        $("#field" + arg).toggleClass("show-more-height");
+    }
+
+</script>
+</body>
+</html>

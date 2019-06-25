@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head><title>courses list</title></head>
+<body>
+<div class="container">
+    <br/>
+
+    <div th:if="${not #lists.isEmpty(courses)}">
+        <ul class="collection with-header" th:each="entry : ${courses}">
+            <li class="collection-header"><b><span th:text="${entry.key}"/></b></li>
+            <li class="collection-item">
+                <div class="row">
+                    <div class="col s12 m6 l4" th:each="course : ${entry.value}">
+                        <a href="#" th:onclick="|load('course/${course.id}')|">
+                            <div class="valign-wrapper">
+                                <i class="material-icons">chevron_right</i><span th:text="${course.name}"/>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="card-panel" th:if="${#lists.isEmpty(courses)}">No Projects Found.</div>
+    <input type="button" class="btn" value="Add Course" th:onclick="|load('coursenew')|"/>
+</div>
+<script>
+    function load(arg) {
+        $("#main-content").load(arg);
+    }
+</script>
+</body>
+</html>
+

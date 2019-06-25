@@ -1,0 +1,77 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="copy">
+	<title>jtechy header</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no"
+		  id="Viewport" name="viewport"/>
+</head>
+
+<body th:fragment="copy">
+<nav class="bgcolor">
+	<div class="container nav-wrapper">
+		<a href="#!" class="flow-text logo" id="jtechy"><strong>Jtechy</strong></a>
+		<a href="#" data-activates="slide-out" class="button-collapse"><i
+				class="material-icons" style="color: white">menu</i></a>
+	</div>
+	<ul id="slide-out" class="side-nav fixed" style="width: 250px">
+		<li>
+			<div class="user-view">
+				<div class="background bgcolor"></div>
+				<i class="material-icons iconlarge" id="userPic">person_pin</i>
+				<a href="login">Login</a>
+			</div>
+		</li>
+		<li><a class="waves-effect logo" href="#!" id="dashboard"><i
+				class="material-icons">dashboard</i>Dashboard</a></li>
+		<li><a class="waves-effect logo" href="#!" id="projects"><i
+				class="material-icons">device_hub</i>Projects</a></li>
+		<li><a class="waves-effect logo" href="#!" id="tools"><i
+				class="material-icons">power</i>Tools</a></li>
+		<li><a class="waves-effect logo" href="#!" id="tutorials"><i
+				class="material-icons">book</i>Tutorials</a></li>
+		<li>
+			<div class="divider"></div>
+		</li>
+		<li><a class="waves-effect logo" href="#!" id="blog"><i
+				class="material-icons">rss_feed</i>blog</a></li>
+		<li><a class="waves-effect logo" href="#!" id="profile"><i
+				class="material-icons">account_box</i>Profile</a></li>
+	</ul>
+</nav>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $("#dashboard").click(function() {
+            $("#main-content").load("dashboard");
+        })
+        $("#projects").click(function() {
+            $("#main-content").load("projects");
+        })
+        $("#tools").click(function() {
+            $("#main-content").load("tool/listtool");
+        })
+        $("#tutorials").click(function() {
+            $("#main-content").load("courses");
+        })
+        $("#blog").click(function() {
+            $("#main-content").load("blog/listblog");
+        })
+        $("#profile").click(function() {
+            $("#main-content").load("entity");
+        })
+        $("#userPic").click(function() {
+            $("#main-content").load("entity");
+        })
+        $("#userID").click(function() {
+            $("#main-content").load("entity");
+        })
+    });
+</script>
+</body>
+
+</html>

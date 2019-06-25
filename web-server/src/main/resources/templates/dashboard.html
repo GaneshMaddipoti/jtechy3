@@ -1,0 +1,87 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<div class="container">
+	<br />
+	<div class="row">
+		<div class="col s12 m6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title"><i class="material-icons">device_hub</i>
+						Projects</span>
+					<p>Explore the projects, implemented using latest technologies with ease of maintainance, spanned accross 
+					various domains like Banking, Retail, eCommerce, Education, Health, Sports, etc... </p>
+				</div>
+				<div class="card-action">
+					<a href="#" id="viewProjects">Develop</a>
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title"><i class="material-icons">book</i>
+						Tutorials</span>
+					<p>Read and listen through your favorite tutorials with ease of understanding. 
+					Updated with latest features - Java, JEE, Spring, Hibernate, Web Services, AWS, Big Data, etc...</p>
+				</div>
+				<div class="card-action">
+					<a href="#" id="viewTutorials">Learn</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12 m6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title"><i class="material-icons">power</i>
+						Tools</span>
+					<p>Plug-in these tools or utility modules into projects, with ease of integration.
+					Save lot of time and compatible with most of the software projects. Implemented in Java but can be integrated with any platform.</p>
+				</div>
+				<div class="card-action">
+					<a href="#" id="viewTools">Integrate</a>
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title"><i class="material-icons">rss_feed</i>
+						Blog</span>
+					<p>Here, you can find technology news, updates, useful information.
+					Also find articles related to everyday things like how it will work, use cases, benifit, etc...</p>
+				</div>
+				<div class="card-action">
+					<a href="#" id="viewMisc">Explore</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(function() {
+		try {
+			$('#modal1').modal('close');
+		}catch(err){
+			//do nothing
+		}
+		$("#viewProjects").click(function() {
+			$('#modal1').modal('open');
+			$("main").load("project/listproject");
+		})
+		$("#viewTutorials").click(function() {
+			$('#modal1').modal('open');
+			$("main").load("course/listcourse");
+		})
+		$("#viewTools").click(function() {
+			$('#modal1').modal('open');
+			$("main").load("tool/listtool");
+		})
+		$("#viewMisc").click(function() {
+			$('#modal1').modal('open');
+			$("main").load("blog/listblog");
+		})
+	});
+</script>
